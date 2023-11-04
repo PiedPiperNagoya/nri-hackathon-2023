@@ -43,12 +43,24 @@
         candidates: [],
       }
     },
+    props: {
+      lat: {
+        required: true,
+      },
+      lng: {
+        required: true,
+      },
+    },
     methods: {
       getCandidates() {
         console.log(this.text)
         const functions = getFunctions()
         const getCandidates = httpsCallable(functions, 'getCandidates')
-        getCandidates({ text: this.text })
+        getCandidates({
+          text: this.text,
+          lat: this.lat,
+          lng: this.lng,
+        })
           .then((res) => {
             const data = res.data.data
             console.log(data)
@@ -58,6 +70,8 @@
     },
     watch: {
       text: function(newVal) {
+        console.log(this.lat)
+        console.log(this.lng)
         if (newVal.length > 1) {
           this.getCandidates()
         }
@@ -125,6 +139,7 @@
       background: none;
       border-bottom: solid 1px #888888;
       border-radius: 0;
+      font-size: 20px;
     }
   }
 
