@@ -58,7 +58,9 @@
         await setDoc(doc(db, 'users', user.uid), {
           id: user.uid,
           name: '',
-          rank: '',
+          icon: '',
+          follow: [],
+          bookmark: [],
         })
         // 試験問題へ遷移
         const message = '新規登録が完了しました'
