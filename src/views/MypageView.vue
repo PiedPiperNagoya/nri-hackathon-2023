@@ -34,7 +34,8 @@
     </div>
 
     <button
-      class="create-plan">
+      class="create-plan"
+      @click="$router.push('/mypage/new')">
       + プランを作成する
     </button>
 
