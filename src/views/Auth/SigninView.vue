@@ -1,7 +1,7 @@
 <template>
   <main>
     <basic-title-component
-      title="新規登録" />
+      title="サインイン" />
 
     <div class="input-box">
       <label>メールアドレス</label>
@@ -14,23 +14,22 @@
     </div>
 
     <div class="link">
-      <router-link to="/signin">既に会員の方はこちら</router-link>
+      <router-link to="/signup">会員登録されていない方はこちら</router-link>
     </div>
 
     <bottom-button-component
-      content="使ってみる"
-      @onclick="signup"/>
+      content="サインインする"
+      @onclick="signin"/>
   </main>
 </template>
 
 <script>
-  import BottomButtonComponent from '../../components/BottomButtonComponent'
   import BasicTitleComponent from '../../components/BasicTitleComponent'
-  import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
-  import { getFirestore, doc, setDoc } from 'firebase/firestore'
+  import BottomButtonComponent from '../../components/BottomButtonComponent'
+  import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
   export default {
-    name: 'SignupView',
-    components: {BasicTitleComponent, BottomButtonComponent},
+    name: 'SigninView',
+    components: {BottomButtonComponent, BasicTitleComponent},
     data () {
       return {
         user: {
@@ -40,36 +39,30 @@
       }
     },
     methods: {
-      async signup() {
+      async signin() {
         const auth = getAuth()
-        const db = getFirestore()
         if (this.user.mail === '' || this.user.pass === '') {
           return
         }
 
-        const res = await createUserWithEmailAndPassword(
-          auth,
-          this.user.mail,
-          this.user.pass
-        )
+        await signInWithEmailAndPassword(auth, this.user.mail, this.user.pass)
 
-        // 新規ユーザのDB登録
-        const user = res.user
-        await setDoc(doc(db, 'users', user.uid), {
-          id: user.uid,
-          name: '',
-          rank: '',
-        })
-        // 試験問題へ遷移
-        const message = '新規登録が完了しました'
-        this.$router.push(`/?message=${message}`)
+        // リダイレクト先またはホーム画面へ遷移
+        const message = 'ログインしました'
+        if ('redirect' in this.$route.query) {
+          this.$router.push(
+            `${this.$route.query['redirect']}?message=${message}`
+          )
+        } else {
+          this.$router.push(`/?message=${message}`)
+        }
       }
     },
   }
 </script>
 
 <style scoped lang="scss">
-  // 入力欄
+
   .input-box {
     margin:  40px auto 0;
     label {
@@ -93,7 +86,6 @@
     }
   }
 
-  // リンク
   .link {
     display: block;
     margin: 20px auto 40px;
