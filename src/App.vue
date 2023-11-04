@@ -1,32 +1,30 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <router-view/>
   </div>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Oswald&display=swap');
+  * {
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+  body, html {
+    margin: 0;
+    padding: 0;
+    color: #222222;
+  }
+  ::-webkit-scrollbar {
+    width:10px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color:#fff;
+    border-radius:10px;
+    box-shadow:inset 0 0 5px rgba(0, 0, 0, 0);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color:#000000;
+    border-radius: 10px;
+    box-shadow:0 0 0 1px rgba(255, 255, 255, 0);
+  }
 </style>
