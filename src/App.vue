@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <router-view/>
+    <header-component />
+    <router-view />
   </div>
 </template>
 
@@ -13,6 +14,9 @@
     margin: 0;
     padding: 0;
     color: #222222;
+  }
+  main {
+    padding-top: 60px;
   }
   ::-webkit-scrollbar {
     width:10px;
@@ -28,3 +32,9 @@
     box-shadow:0 0 0 1px rgba(255, 255, 255, 0);
   }
 </style>
+<script>
+  import HeaderComponent from './components/HeaderComponent'
+  export default {
+    components: {HeaderComponent},
+  }
+</script>
