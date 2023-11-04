@@ -40,19 +40,20 @@
 <style scoped lang="scss">
   $service_color: #FF5700;
   .selector {
-    height: 40px;
+    height: 30px;
     margin: 20px 0 0;
     text-align: center;
     border-bottom: solid 2px #888888;
 
     span {
       display: inline-block;
-      height: 40px;
-      line-height: 40px;
-      margin: 0 40px;
+      height: 30px;
+      line-height: 30px;
+      margin: 0 10px;
       padding: 0 20px;
       color: #888888;
       font-weight: bold;
+      font-size: 16px;
       cursor: pointer;
 
       &.selected {
