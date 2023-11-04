@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import SignupView from '../views/Auth/SignupView'
 import SigninView from '../views/Auth/SigninView'
 import MypageView from '../views/MypageView'
+import CreatePlanView from '../views/CreatePlanView'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/mypage',
     name: 'Mypage',
     component: MypageView,
+  },
+  {
+    path: '/mypage/new',
+    name: 'CreatePlan',
+    component: CreatePlanView,
   },
 ]
 

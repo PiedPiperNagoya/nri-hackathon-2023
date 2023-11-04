@@ -34,7 +34,8 @@
     </div>
 
     <button
-      class="create-plan">
+      class="create-plan"
+      @click="$router.push('/mypage/new')">
       + プランを作成する
     </button>
 
@@ -148,6 +149,9 @@
 </script>
 
 <style scoped lang="scss">
+  main {
+    padding-bottom: 80px;
+  }
   .user-icon {
     display: block;
     width: 100px;
@@ -183,7 +187,7 @@
   // プラン作成ボタン
   .create-plan {
     display: block;
-    width: 200px;
+    width: 240px;
     height: 40px;
     line-height: 25px;
     margin: 0 auto;
